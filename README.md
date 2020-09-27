@@ -24,6 +24,50 @@ The Reacher environment contains multiple unity agents to increase training time
 ### State and Action Space
 The observation space consists of 33 variables corresponding to position, rotation, velocity, and angular velocities of the arm. Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
 
+## Installation
+
+### Python
+Anaconda Python 3.6 is required: Download and installation instructions here: https://www.anaconda.com/download/
+
+Create (and activate) a new conda (virtual) environment with Python 3.6.
+
+Linux or Mac:
+
+```bash
+conda create --name yourenvnamehere python=3.6
+
+source activate yourenvnamehere
+```
+Windows:
+```bash
+conda create --name yourenvnamehere python=3.6
+
+activate yourenvnamehere
+```
+Download and save this GitHub repository.
+
+To install required dependencies (torch, ML-Agents trainers, etc.), open the `Reacher_Continuous_Control.ipynb` and run the first cell.
+
+Note: Due to its intricacy, you may have to install PyTorch separatetly.
+
+### Unity Environment
+For this example project, you will not need to install Unity - this is because you can use a version of the Reacher's unity environment that is already built (compiled) as a standalone application.
+
+You don't need to download the environments seperately, although they are available underder the `_compressed_files` folder. The `Reacher_Continuous_Control.ipynb` notebook detects the right environment for your OS (except Windows (32 bit)).
+
+## Training
+1. Activate the conda environment you created above
+
+2. Change the directory to the 'yourpath/thisgithubrepository' directory.
+
+3. Run the first cells to initiate the training.
+
+4. After training a `checkpoint_actor.pth` and `checkpoint_critic.pth` files will be saved with the trained model weights
+
+5. See the performance plot after the training.
+
+For more information about the DDPG training algorithm and the training hyperparameters see the included `Report.md` file.
+
 ## A Smart Agent
 Here is a reward plot acquired by the agent while learning. It surpasses +33 after around 120 episodes.
 <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/DDPG_reward_plot.png" width="400" height="200">
