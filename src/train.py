@@ -4,41 +4,60 @@ import torch
 from tqdm import tqdm
 
 
-def train_ddpg(agent, env, num_agents=20, n_episodes=2000, max_t=200):
-    initial_score = 5
-    episode_scores = []
+def train_ddpg(agent, env, num_agents=20, n_episodes=120, max_t=200):
+    previous_score = 1
+    episode_scores = []  # list containing scores from each episode
     brain_name = env.brain_names[0]
     scores_window = deque(maxlen=100)  # last 100 scores
     # eps = eps_start  # initialize epsilon
     episode_loop = tqdm(range(1, n_episodes + 1), desc="Episode 0 | Avg Score: None", leave=False)
     #max_score = -np.Inf
-    for i_episode in range(1, n_episodes + 1):
-        # reset the environment
+    for _ in episode_loop: #range(1, n_episodes + 1): # i_episode
+        # reset the unity environment
         env_info = env.reset(train_mode=True)[brain_name]
         states = env_info.vector_observations
+        # reset the agent for the new episode
         agent.reset()
         agent_scores = np.zeros(num_agents)
         #for t in range(max_t):
-        done = False
-        step = 0
-        while not done:
+        scores_average_window = 100
+        #print("### Episode:",episode_loop.n)
+        while True:
+            # determine actions for the unity agents from current sate
             actions = agent.act(states)
-            env_info = env.step(actions)[brain_name]
-            next_states, rewards, dones = env_info.vector_observations, env_info.rewards, env_info.local_done
-            agent.step(states, actions, rewards, next_states, dones)
-            states = next_states
-            agent_scores += rewards
-            if np.any(dones):
-                done = True
 
+            # send the actions to the unity agents in the environment and receive resultant environment information
+            env_info = env.step(actions)[brain_name]
+
+            next_states = env_info.vector_observations  # get the next states for each unity agent in the environment
+            rewards = env_info.rewards  # get the rewards for each unity agent in the environment
+            dones = env_info.local_done  # see if episode has finished for each unity agent in the environment
+
+            # Send (S, A, R, S') info to the training agent for replay buffer (memory) and network updates
+            agent.step(states, actions, rewards, next_states, dones)
+
+            # set new states to current states for determining next actions
+            states = next_states
+
+            # Update episode score for each unity agent
+            agent_scores += rewards
+
+            # If any unity agent indicates that the episode is done,
+            # then exit episode loop, to begin new episode
+            if np.any(dones):
+                break
+
+        #print("Came out of the game loop")
         episode_scores.append(np.mean(agent_scores))
-        average_score = np.mean(episode_scores[i_episode - min(i_episode, scores_average_window):i_episode + 1])
+        average_score = np.mean(episode_scores[episode_loop.n - min(episode_loop.n, scores_average_window):episode_loop.n + 1])
         #scores.append(score)
-        print(episode_loop.n)
-        episode_loop.set_description_str('Episode {} | Avg Score: {:.2f}'.format(episode_loop.n, np.mean(scores_window)))
-        if agent_scores.mean() > initial_score:
-            episode_loop.set_description_str('Achieved in {:d} episode | Avg Score: {:.2f}'.format(episode_loop.n - 100, np.mean(scores_window)))
-            torch.save(agent.actor_local.state_dict(), 'checkpoint_actor.pth')
-            torch.save(agent.critic_local.state_dict(), 'checkpoint_critic.pth')
-            initial_score = np.mean(scores_window)
-    return scores
+        #print(episode_loop.n)
+        episode_loop.set_description_str('Episode {} | Avg Score: {:.2f}'.format(episode_loop.n, average_score))
+        if agent_scores.mean() > previous_score:
+            previous_score = agent_scores.mean()
+            episode_loop.set_description_str('Achieved in {} episode | Avg Score: {:.2f}'.format(episode_loop.n, average_score))
+            #torch.save(agent.actor_local.state_dict(), 'checkpoint_actor.pth')
+            torch.save(agent.actor_local, 'checkpoint_actor.pth')
+            #torch.save(agent.critic_local.state_dict(), 'checkpoint_critic.pth')
+            torch.save(agent.critic_local, 'checkpoint_critic.pth')
+    return episode_scores
