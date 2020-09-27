@@ -26,7 +26,7 @@ The observation space consists of 33 variables corresponding to position, rotati
 
 ## A Smart Agent
 Here is a reward plot acquired by the agent while learning. It surpasses +33 after around 120 episodes.
-<Img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/DDPG_reward_plot.png" width="400" height="200">
+<img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/DDPG_reward_plot.png" width="400" height="200">
 
 Look at it go:
 
