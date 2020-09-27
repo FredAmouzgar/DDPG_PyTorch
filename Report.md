@@ -16,7 +16,7 @@ For consistancy, DDPG follows DQN's architecture which had five-layer neural net
 ### Method
 DQN, as represented in Figure 1, executes a typical reinforcement learning algorithm. It gathers a repository of experiences or transitions while exploring the environment. This dataset is collected by a behavior policy which is being updated more regularly. The target policy, which determines the final policy of the agent, is updated on a slower rate.
 
-<center><img src="https://raw.githubusercontent.com/FredAmouzgar/DDPG_PyTorch/master/images/ddpg.png" width="800" height="400">
+<center><img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/ddpg.png" width="800" height="400">
 <br><font size=2>Figure 1: The DDPG <a href="https://arxiv.org/abs/1312.5602">[2]</a></font></center>
 
 ### The Reacher Environment
