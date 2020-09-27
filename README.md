@@ -16,7 +16,18 @@ To test the code, after cloning the project, open the `Reacher_Continuous_Contro
 ## The Reacher Environment
 The example uses a modified version of the Unity ML-Agents Reacher Example Environment. The environment includes In this environment, a double-jointed arm can move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible. The environment uses multiple unity agents to increase training time.
 
-<img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/Reacher.gif" width="400" height="200">
+<img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/Reacher.png" width="400" height="200">
 
-## Multiagent Traning
-The Reacher environment contains multiple unity agents to increase training time. The training agent collects observations and learns from the experiences of all of the unity agents simultaneously. The Reacher environment example employed here has 20 unity agents (i.e., 20 double-jointed arms).
+### Multiagent Traning
+The Reacher environment contains multiple unity agents to increase training time. The training agent collects observations and learns from the experiences of all of the unity agents simultaneously. The Reacher environment example employed here has 20 unity agents.
+
+### State and Action Space
+The observation space consists of 33 variables corresponding to position, rotation, velocity, and angular velocities of the arm. Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
+
+## A Smart Agent
+Here is a reward plot acquired by the agent while learning. It surpasses +33 after around 120 episodes.
+<Img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/DDPG_reward_plot.png" width="400" height="200">
+
+Look at it go:
+
+<img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/Reacher.gif" width="400" height="200">
