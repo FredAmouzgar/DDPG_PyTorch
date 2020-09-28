@@ -69,7 +69,7 @@ You don't need to download the environments seperately, although they are availa
 For more information about the DDPG training algorithm and the training hyperparameters see the included `Report.md` file.
 
 ## A Smart Agent
-Here is a reward plot acquired by the agent while learning. It surpasses +33 after around 120 episodes.
+Here is a reward plot acquired by the agent while learning. It surpasses +33 after around 125 episodes.
 
 <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/DDPG_reward_plot.png" width="400" height="200">
 
