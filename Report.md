@@ -16,8 +16,10 @@ For consistancy, DDPG follows DQN's architecture which had five-layer neural net
 ### Method
 DQN, as represented in Figure 1, executes a typical reinforcement learning algorithm. It gathers a repository of experiences or transitions while exploring the environment. This dataset is collected by a behavior policy which is being updated more regularly. The target policy, which determines the final policy of the agent, is updated on a slower rate.
 
-<center><img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/ddpg.png" width="800" height="400">
-<br><font size=2>Figure 1: The DDPG <a href="https://arxiv.org/abs/1312.5602">[2]</a></font></center>
+<p align="center">
+    <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/ddpg.png" width="800" height="700"><br>
+    <p style="fint-size=2">Figure 1: The DDPG<a href="https://arxiv.org/abs/1509.02971">[2]</a></p>
+</p>
 
 ### The Reacher Environment
 The example uses a modified version of the Unity ML-Agents Reacher Example Environment. The environment includes In this environment, a double-jointed arm can move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible. The environment uses multiple unity agents to increase training time.
