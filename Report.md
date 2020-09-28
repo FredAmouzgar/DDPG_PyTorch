@@ -24,7 +24,9 @@ DDPG, as represented in Figure 1, executes a typical reinforcement learning algo
 ### The Reacher Environment
 The example uses a modified version of the Unity ML-Agents Reacher Example Environment. The environment includes In this environment, a double-jointed arm can move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible. The environment uses multiple unity agents to increase training time.
 
-<img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/Reacher.png" width="400" height="200">
+<p align="center">
+    <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/Reacher.png" width="400" height="200">
+</p>
 
 The observation space consists of 33 variables corresponding to position, rotation, velocity, and angular velocities of the arm. Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
 
@@ -44,14 +46,14 @@ To test the code, after cloning the project, open the `Reacher_Continuous_Contro
 Figure 2 is depicted a reward plot acquired by the agent while learning. It surpasses +33 after around 120 episodes.
 
 <p align="center">
-    <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/DDPG_reward_plot.png" width="400" height="200"><br><p style="font-size=70%;">Figure 2: The average reward during training</p>
+    <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/DDPG_reward_plot.png" width="400" height="200"><br><p align="center" style="font-size=70%;">Figure 2: The average reward during training</p>
 </p>
 
 Figure 3 shows one episode after training.
 
 <p align="center">
     <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/Reacher.gif" width="400" height="200"><br>
-    <p style="font-size=70%;">Figure 3: A Trained Agent</p>
+    <p align="center" style="font-size=70%;">Figure 3: A Trained Agent</p>
 </p>
 
 ### Hyperparameters
