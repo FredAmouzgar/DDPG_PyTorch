@@ -43,7 +43,7 @@ This repository consists of these files:
 
 To test the code, after cloning the project, open the `Reacher_Continuous_Control.ipynb` notebook. It has all the necessary steps to install and load the packages, and train and test the agent. It also automatically detects the operating system, and loads the corresponding environment. There is an already trained agent stored in `checkpoint-actor.pth` and `checkpoint-critic.pth`, by running the last part of the notebook, this can be directly tested.
 
-Figure 2 is depicted a reward plot acquired by the agent while learning. It surpasses +33 after around 120 episodes.
+Figure 2 is depicted a reward plot acquired by the agent while learning. It surpasses +33 after around 125 episodes.
 
 <p align="center">
     <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/DDPG_reward_plot.png" width="400" height="200"><br><p align="center" style="font-size=70%;">Figure 2: The average reward during training</p>
@@ -57,31 +57,29 @@ Figure 3 shows one episode after training.
 </p>
 
 ### Hyperparameters
-Reacher Environment:
+__Reacher Environment:__
 - State size: 33
 - Action size: 4
 
-
-DDPG Agent:
+__DDPG Agent:__
 - Replay memory buffer size: <img src="https://render.githubusercontent.com/render/math?math=10 ^ 5">
-- Batch size: 64
+- Batch size: 128
 - <img src="https://render.githubusercontent.com/render/math?math=\gamma">: 0.99
 - <img src="https://render.githubusercontent.com/render/math?math=\tau"> for target update: <img src="https://render.githubusercontent.com/render/math?math=10^{-3}">
-- <img src="https://render.githubusercontent.com/render/math?math=\alpha"> or learning rate: <img src="https://render.githubusercontent.com/render/math?math=5\times 10 ^ {-4}">
+- Actor learning rate: <img src="https://render.githubusercontent.com/render/math?math=5\times 10 ^ {-4}">
+- Critic learning rate: <img src="https://render.githubusercontent.com/render/math?math=5\times 10 ^ {-4}">
 
-Neural Networks:
-- Input Layer: 37 (state size)
-- Layer 1: 64 units
-- Layer 2: 64 units
+__Neural Networks:__
+- Input Layer: 33 (state size)
+- Hidden Layer: 256 units
 - Output Layer: 4 (action size)
-- Activation function: ReLU, linear (output layer)
+- Activation function: 
+    1. Actor: Tanh
+    2. Critic: linear (output layer)
 
-Training Parameters:
-- Episodes: 1200
-- Steps in every episode: 1000
-- First <img src="https://render.githubusercontent.com/render/math?math=\epsilon"> value: 1.0
-- Final <img src="https://render.githubusercontent.com/render/math?math=\epsilon"> value: 0.01
-- <img src="https://render.githubusercontent.com/render/math?math=\epsilon"> decay: 0.995
+__Training Parameters:__
+- Episodes: 125
+- Steps in every episode: Depends on the agents' success
 
 ### Future Work:
 1. Implementing TD3
