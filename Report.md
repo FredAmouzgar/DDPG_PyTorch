@@ -14,11 +14,11 @@ For consistancy, DDPG follows DQN's architecture which had five-layer neural net
 4. Experience Replay
 
 ### Method
-DQN, as represented in Figure 1, executes a typical reinforcement learning algorithm. It gathers a repository of experiences or transitions while exploring the environment. This dataset is collected by a behavior policy which is being updated more regularly. The target policy, which determines the final policy of the agent, is updated on a slower rate.
+DDPG, as represented in Figure 1, executes a typical reinforcement learning algorithm. It gathers a repository of experiences or transitions while exploring the environment. This dataset is collected by a behavior policy which is being updated more regularly. The target policy, which determines the final policy of the agent, is updated on a slower rate. The critic uses a TD style loss function, whereas the actor utilizes an objective derived from the Policy Gradient method.
 
 <p align="center">
     <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/ddpg.png" width="800" height="700"><br>
-    <p style="fint-size=2">Figure 1: The DDPG<a href="https://arxiv.org/abs/1509.02971">[2]</a></p>
+    <p style="font-size=2">Figure 1: The DDPG<a href="https://arxiv.org/abs/1509.02971">[2]</a></p>
 </p>
 
 ### The Reacher Environment
@@ -43,7 +43,8 @@ To test the code, after cloning the project, open the `Reacher_Continuous_Contro
 
 Figure 2 is depicted a reward plot acquired by the agent while learning. It surpasses +33 after around 120 episodes.
 
-<center><img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/DDPG_reward_plot.png" width="400" height="200"><br><font size=2>Figure 2: The average reward during training</font></center>
+<p align="center">
+    <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/DDPG_reward_plot.png" width="400" height="200"><br><p style="font-size=2">Figure 2: The average reward during training</p></center>
 
 Figure 3 shows one episode after training.
 
@@ -55,7 +56,7 @@ Reacher Environment:
 - Action size: 4
 
 
-DQN Agent:
+DDPG Agent:
 - Replay memory buffer size: <img src="https://render.githubusercontent.com/render/math?math=10 ^ 5">
 - Batch size: 64
 - <img src="https://render.githubusercontent.com/render/math?math=\gamma">: 0.99
