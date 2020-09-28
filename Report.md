@@ -73,9 +73,9 @@ __Neural Networks:__
 - Input Layer: 33 (state size)
 - Hidden Layer: 256 units
 - Output Layer: 4 (action size)
-- Activation function: 
+- Activation function (output layer): 
     1. Actor: Tanh
-    2. Critic: linear (output layer)
+    2. Critic: linear
 
 __Training Parameters:__
 - Episodes: 125
