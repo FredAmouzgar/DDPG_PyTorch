@@ -18,7 +18,7 @@ DDPG, as represented in Figure 1, executes a typical reinforcement learning algo
 
 <p align="center">
     <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/ddpg.png" width="800" height="700"><br>
-    <p style="font-size=2">Figure 1: The DDPG<a href="https://arxiv.org/abs/1509.02971">[2]</a></p>
+    <p style="font-size=70%;">Figure 1: The DDPG<a href="https://arxiv.org/abs/1509.02971">[2]</a></p>
 </p>
 
 ### The Reacher Environment
@@ -44,11 +44,15 @@ To test the code, after cloning the project, open the `Reacher_Continuous_Contro
 Figure 2 is depicted a reward plot acquired by the agent while learning. It surpasses +33 after around 120 episodes.
 
 <p align="center">
-    <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/DDPG_reward_plot.png" width="400" height="200"><br><p style="font-size=2">Figure 2: The average reward during training</p></center>
+    <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/DDPG_reward_plot.png" width="400" height="200"><br><p style="font-size=70%;">Figure 2: The average reward during training</p>
+</p>
 
 Figure 3 shows one episode after training.
 
-<center><img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/Reacher.gif" width="400" height="200"><br><font size=2>Figure 3: A Trained Agent</font></center>
+<p align="center">
+    <img src="https://github.com/FredAmouzgar/DDPG_PyTorch/raw/master/images/Reacher.gif" width="400" height="200"><br>
+    <p style="font-size=70%;">Figure 3: A Trained Agent</p>
+</p>
 
 ### Hyperparameters
 Reacher Environment:
