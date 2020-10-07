@@ -54,8 +54,12 @@ class Agent():
         self.memory = ReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, random_seed)
 
     def load_brain(self):
-        self.actor_local.load_state_dict(torch.load('checkpoint_actor.pth'))
-        self.critic_local.load_state_dict(torch.load('checkpoint_critic.pth'))
+        if torch.cuda.is_available():
+            map_location=lambda storage, loc: storage.cuda()
+        else:
+            map_location='cpu'
+        self.actor_local.load_state_dict(torch.load('checkpoint_actor.pth', map_location=map_location))
+        self.critic_local.load_state_dict(torch.load('checkpoint_critic.pth', map_location=map_location))
 
     def step(self, states, actions, rewards, next_states, dones):
         """Save experience in replay memory, and use random sample from buffer to learn."""
